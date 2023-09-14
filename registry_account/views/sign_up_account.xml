@@ -5,62 +5,6 @@
                     <link rel="stylesheet" type="text/css" href="/registry_account/static/src/css/sign_up.css"/>
                 </t>
             </t>
-            <!-- <div class="mb-3 field-login">
-                <div class="row">
-                    <div class="col">
-                        <label for="email">Your Email</label>
-                        <input type="text" name="email" t-att-value="email" id="email" class="form-control form-control-sm" autofocus="autofocus"
-                            autocapitalize="off" required="required" />
-                    </div>
-                    <div class="col">
-                        <label for="name">Your Name</label>
-                        <input type="text" name="name" t-att-value="name" id="name" class="form-control form-control-sm" placeholder=""
-                            required="required"  />
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-3 field-company pt-2">
-                <label for="company">Your Company Name</label>
-                <input type="text" name="company" t-att-value="company" id="company" class="form-control form-control-sm"
-                    required="required" />
-            </div>
-            <div class="mb-3 field-company pt-2">
-                <label for="phonenumber">Phone Number</label>
-                <input type="text" name="phonenumber" id="phonenumber" class="form-control form-control-sm" />
-            </div>
-            <div class="mb-3 field-password pt-2">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" class="form-control form-control-sm"
-                    required="required" />
-            </div>
-
-            <div class="mb-3 field-confirm_password">
-                <label for="confirm_password">Confirm Password</label>
-                <input type="password" name="confirm_password" id="confirm_password" class="form-control form-control-sm" required="required"/>
-            </div>
-            <div class="mb-3 field-employee pt-2">
-                <label for="employee">Quy mô công ty</label>
-                <select name="employee" id="employee" class="form-control form-control-sm" required="required">
-                    <option value="10">10 nhân viên</option>
-                    <option value="50">50 nhân viên</option>
-                    <option value="100">100 nhân viên</option>
-                </select>
-            </div> -->
-                <!-- <div class="col-xl-6">
-                    <div class="col-12 py-2 field-company-size">
-                        <label class="select-label form-label">Company size</label>
-                        <select name="company_size" required="required" tabindex="6">
-                            <option selected="selected" disabled="disabled" hidden="hidden" value=""></option>
-                            <option value="1-5">&lt; 5 employees</option>
-                            <option value="5-20">5 - 20 employees</option>
-                            <option value="20-50">20 - 50 employees</option>
-                            <option value="50-250">50 - 250 employees</option>
-                            <option value="250-over">&gt; 250 employees</option>
-                        </select>
-                    </div>
-                </div> -->
-            
         <label class="col-one-half">
 			<span class="label-text">Company Name</span>
 			<input type="text" name="company" autocomplete="off"/>

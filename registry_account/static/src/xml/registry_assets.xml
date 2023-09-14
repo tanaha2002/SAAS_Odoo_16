@@ -1,0 +1,7 @@
+<templates id="assets_backend" xml:space="preserve">
+    <t t-name="assets_backend" t-extend="web.assets_backend">
+        <t t-append="head">
+            <link rel="stylesheet" type="text/css" href="/registry_account/static/src/css/registry.css"/>
+        </t>
+    </t>
+</templates>

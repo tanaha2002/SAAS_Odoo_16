@@ -1,0 +1,27 @@
+#check regex for db_name,user_name
+            if not user_info['db_name'].isalnum():
+                alert_message = "Tên database không được chứa ký tự đặc biệt hoặc để trống."
+                return """
+                    <script>
+                        alert('%s');
+                        window.location.href = '/registryAccount';
+                    </script>
+                """ % alert_message
+            #check mail regex r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
+            if not re.match(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)",user_info['login_name']):
+                alert_message = "Email không hợp lệ."
+                return """
+                    <script>
+                        alert('%s');
+                        window.location.href = '/registryAccount';
+                    </script>
+                """ % alert_message
+            #check phone number regex at least 10 digits
+            if not re.match(r"^[0-9]{9,14}$",user_info['phone_number']):
+                alert_message = "Số điện thoại không hợp lệ."
+                return """
+                    <script>
+                        alert('%s');
+                        window.location.href = '/registryAccount';
+                    </script>
+                """ % alert_message

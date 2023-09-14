@@ -1,14 +1,3 @@
-<!-- <odoo>
-  <data>
-    <template id="custom_login_template" inherit_id="web.login">
-        <xpath expr="//form[@class='oe_login_form']" position="after">
-            <div class="oe_login_footer">
-                new user? <a href="/registryAccount">Register here</a>
-            </div>
-        </xpath>
-    </template>
-  </data>
-</odoo> -->
 <odoo>
   <data>
     <template id="custom_login_template" inherit_id="auth_signup.login">

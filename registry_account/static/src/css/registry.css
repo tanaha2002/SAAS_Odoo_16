@@ -1,0 +1,28 @@
+
+.info-icon {
+  position: absolute;
+  top: 50%;
+  right: -10px; /* Adjust the value to position the bubble */
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.info-bubble {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  padding: 10px;
+  max-width: 400px;
+  z-index: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  left: 92%; /* Position the bubble relative to the right edge of the input field */
+  top: 48%; /* Center the bubble vertically */
+  font-style: italic;
+
+}
+
+.info-bubble.active {
+  display: block;
+}

@@ -1,0 +1,328 @@
+<odoo>
+    <template id="dangkyaccount" name="Đăng ký cho Database mới" >
+        <t t-call="website.layout">
+                <t t-append="head">
+                    <link rel="stylesheet" type="text/css" href="/registry_account/static/src/css/registry.css"/>
+                </t>
+            <div id="wrap" class="oe_structure oe_empty">
+                <section class="s_title pt24 pb24 o_colored_level s_parallax_no_overflow_hidden bg-black-50" data-vcss="001" data-snippet="s_title" data-scroll-background-ratio="0" data-name="Title" style="position: relative;" data-oe-shape-data="{&quot;shape&quot;:&quot;web_editor/Origins/18&quot;,&quot;flip&quot;:[],&quot;animated&quot;:&quot;true&quot;}"><div class="o_we_shape o_web_editor_Origins_18 o_we_animated" style=""/>
+                    
+                    
+                    <div class="container">
+                        <h1>Đăng ký&amp;nbsp;nhận ngay ERP miễn phí</h1>
+                    </div>
+                </section>
+                <section class="s_text_block pt40 pb40 o_colored_level" data-snippet="s_text_block" data-name="Text" style="background-image: none;">
+                    <div class="s_allow_columns container">
+                        <div class="row">
+                            <div class="col-lg-8 mt-4 mt-lg-0 o_colored_level" style="">
+                                <p><span style="color: rgb(55, 65, 81); font-style: normal; font-weight: 400; background-color: inherit; font-size: 16px;">Để giúp&amp;nbsp;cho hành trình chuyển đổi số của khách hàng&amp;nbsp;dễ dàng hơn, chúng tôi tặng miễn phí vĩnh viễn và không giới hạn người dùng hai bộ giải pháp quan trọng:&amp;nbsp;</span></p><ul><li><span style="color: rgb(55, 65, 81); font-style: normal; font-weight: 400; background-color: inherit; font-size: 16px;">Quản lý khách hàng và Gia tăng doanh số - bao gồm các công cụ CRM, Quản lý Liên hệ, Bán hàng và Báo giá</span></li><li><span style="color: rgb(55, 65, 81); font-style: normal; font-weight: 400; background-color: inherit; font-size: 16px;">Quản lý dự án và Công việc - bao gồm Quản lý Dự án, Công việc, Ghi chú, Chấm công...&amp;nbsp;</span></li></ul><p><span style="color: rgb(55, 65, 81); font-style: normal; font-weight: 400; background-color: inherit; font-size: 16px;">Chúng tôi tin rằng hai bộ giải pháp trên giúp khách hàng&amp;nbsp;&amp;nbsp;trải nghiệm và nhận được&amp;nbsp;lợi ích thiết thực của ERP&amp;nbsp; ngay lập tức mà không phải lo lắng về chi phí đầu tư.</span><br/></p><p><span style="font-size: 16px;">Hãy để lại thông tin để chúng tôi hỗ trợ bạn tốt hơn.</span><br/></p>
+                                <section class="s_website_form" data-vcss="001" data-snippet="s_website_form" data-name="Form">
+                                    <div class="container">
+                                    
+                                        <form action="/selectModules" class="o_mark_required" role="form" method="post" t-if="not message"  style="max-width: 760px;">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                            <div class="s_website_form_rows row s_col_no_bgcolor">
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                
+        
+        
+        
+        
+    
+    <div data-visibility-condition="" data-visibility-between="" class="s_website_form_field mb-3 col-12 s_website_form_required" data-type="char" data-name="Field">
+            <div class="row s_col_no_resize s_col_no_bgcolor">
+                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px;" for="o9njlj4cyxb">
+                     
+        
+        <span class="s_website_form_label_content">Họ và tên</span>
+        
+            <span class="s_website_form_mark">   *</span></label>
+                <div class="col-sm">
+                    
+            <input type="text" class="form-control s_website_form_input" name="name" required="1" placeholder="" id="o9njlj4cyxb" data-fill-with="name" wfd-id="id4"/>
+        
+                    
+
+
+        
+        
+        
+    
+                </div>
+            </div>
+        </div><div data-visibility-condition="" data-visibility-between="" class="s_website_form_field mb-3 col-12 s_website_form_required" data-type="tel" data-name="Field">
+            <div class="row s_col_no_resize s_col_no_bgcolor">
+                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px;" for="oax6z47p0zpk">
+                     
+        
+        <span class="s_website_form_label_content">Số điện thoại</span></label>
+                <div class="col-sm">
+                    
+            <input type="tel" class="form-control s_website_form_input" name="phone" value="" placeholder="" id="oax6z47p0zpk" data-fill-with="phone" required="" wfd-id="id8"/>
+        
+                    
+
+
+        
+        
+        
+    
+                </div>
+            </div>
+        </div>
+        <div data-visibility-condition="" data-visibility-between="" class="s_website_form_field mb-3 col-12" data-type="selection" data-name="Field">
+            <div class="row s_col_no_resize s_col_no_bgcolor">
+                <label class=" col-sm-auto s_website_form_label " style="width: 200px" for="otkzj0spgxio">
+                     
+        
+        <span class="s_website_form_label_content">Liên hệ khách hàng qua</span>
+        
+            
+        
+    
+                </label>
+                <div class="col-sm">
+                    
+            
+            <div class="row s_col_no_resize s_col_no_bgcolor s_website_form_multiple" data-name="x_contact_via" data-display="horizontal">
+                
+                    
+        
+        <div class="radio col-12 col-lg-4 col-md-6">
+            <div class="form-check">
+                <input type="radio" class="s_website_form_input form-check-input" id="otkzj0spgxio0" name="x_contact_via" checked="checked" value="Email" data-fill-with="undefined"/>
+                <label class="form-check-label s_website_form_check_label" for="otkzj0spgxio0">
+                    Email
+                </label>
+            </div>
+        </div>
+    
+                
+                    
+        
+        <div class="radio col-12 col-lg-4 col-md-6">
+            <div class="form-check">
+                <input type="radio" class="s_website_form_input form-check-input" id="otkzj0spgxio1" name="x_contact_via" value="Điện thoại"/>
+                <label class="form-check-label s_website_form_check_label" for="otkzj0spgxio1">
+                    Phone
+                </label>
+            </div>
+        </div>
+    
+                
+                    
+        
+        <div class="radio col-12 col-lg-4 col-md-6">
+            <div class="form-check">
+                <input type="radio" class="s_website_form_input form-check-input" id="otkzj0spgxio2" name="x_contact_via" value="Zalo"/>
+                <label class="form-check-label s_website_form_check_label" for="otkzj0spgxio2">
+                    Zalo
+                </label>
+            </div>
+        </div>
+    
+                
+            </div>
+        
+                    
+
+
+        
+        
+        
+    
+                </div>
+            </div>
+        </div>
+        <div data-visibility-condition="" data-visibility-between="" style="animation-name: o_anim_fade_in; animation-play-state: running; visibility: visible;" class="s_website_form_field mb-3 col-12 s_website_form_model_required" data-type="email" data-name="Field">
+            <div class="row s_col_no_resize s_col_no_bgcolor">
+                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px;" for="o0xpn4wwt6rhm">
+                     
+        
+        <span class="s_website_form_label_content">Email</span>
+        
+            <span class="s_website_form_mark"> *</span></label>
+                <div class="col-sm">
+                    
+            <input type="email" class="form-control s_website_form_input" name="email" required="true" value="" placeholder="" id="o0xpn4wwt6rhm" data-fill-with="undefined" wfd-id="id9"/>
+        
+                    
+
+
+        
+        
+        
+    
+                </div>
+            </div>
+        </div><div data-visibility-condition="" data-visibility-between="" class="s_website_form_field mb-3 col-12 s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+            <div class="row s_col_no_resize s_col_no_bgcolor">
+                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px;" for="o39xcke4vn7r">
+                     
+        
+        <span class="s_website_form_label_content">Mật khẩu</span>
+        
+            <span class="s_website_form_mark">              *</span>
+        
+    
+                </label>
+                <div class="col-sm">
+                    
+            <input type="password" class="form-control s_website_form_input" name="password" required="1" value="" placeholder="" id="o39xcke4vn7r" data-fill-with="undefined" wfd-id="id10"/>
+        
+                    
+
+
+        
+        
+        
+    
+                </div>
+            </div>
+        </div><div data-visibility-condition="" data-visibility-between="" class="s_website_form_field mb-3 col-12 s_website_form_required" data-type="char" data-name="Field">
+            <div class="row s_col_no_resize s_col_no_bgcolor">
+                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px;" for="o8yer21ma289">
+                     
+        
+        <span class="s_website_form_label_content">Tên công ty</span>
+        
+            <span class="s_website_form_mark"> *</span></label>
+                <div class="col-sm">
+                    
+            <input type="text" class="form-control s_website_form_input" name="company_name" required="1" value="" id="o8yer21ma289" data-fill-with="undefined" wfd-id="id11"/>
+        
+                    
+
+
+        
+        
+        
+    
+                </div>
+            </div>
+        </div>
+        <div data-visibility-condition="" data-visibility-between="" class="s_website_form_field mb-3 col-12 s_website_form_required" data-type="char" data-name="Field">
+            <div class="row s_col_no_resize s_col_no_bgcolor">
+                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px;" for="o8yer21ma2892">
+                     
+        
+        <span class="s_website_form_label_content">Tên Subdomain</span>
+        
+            <span class="s_website_form_mark"> *</span></label>
+                <div class="col-sm">
+                    
+            <input type="text" class="form-control s_website_form_input" name="company" required="1" value="" id="o8yer21ma2892" data-fill-with="undefined"/>
+        
+                    
+
+
+        
+        
+        
+    
+                </div>
+            </div>
+        </div>
+        <div class="info-bubble" id="infoBubble">
+            Ví dụ khi đăng ký subdomain là <b>bluebolt</b> thì bạn sẽ có domain là <b>bluebolt.berp.vn</b>
+        </div>
+           
+        
+        <div data-visibility-condition="" data-visibility-between="" class="s_website_form_field mb-3 col-12 s_website_form_required" data-type="many2one" data-name="Field">
+            <div class="row s_col_no_resize s_col_no_bgcolor">
+                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px;" for="olcpdffjxh2d">
+                     
+        
+        <span class="s_website_form_label_content">Quy mô công ty</span>
+        
+            <span class="s_website_form_mark"> *</span>
+        
+    
+                </label>
+                <div class="col-sm">
+                    
+                <select class="form-select s_website_form_input" name="Quy mô công ty" id="ovwmlpgab28" style="">
+                    
+                        <option value="1" selected="selected">&amp;lt;= 10 nhân viên</option>
+                    
+                        <option value="2">11 - 50 nhân viên</option>
+                    
+                        <option value="3">51 - 100 nhân viên</option>
+                    
+                        <option value="4">101 - 500 nhân viên</option>
+                    
+                        <option value="5">501 - 1000 nhân viên</option>
+                    
+                        <option value="6">Trên 1000 nhân viên</option>
+                    
+                </select>
+                
+            
+                    
+
+
+        
+        
+        
+    
+                </div>
+            </div>
+        </div><div data-visibility-condition="" data-visibility-between="" class="s_website_form_field mb-3 col-12" data-type="text" data-name="Field">
+            <div class="row s_col_no_resize s_col_no_bgcolor">
+                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px;" for="ode9zsst5eo">
+                     
+        
+        <span class="s_website_form_label_content">Yêu cầu chi tiết</span>
+        
+            
+        
+    
+                </label>
+                <div class="col-sm">
+                    
+            <textarea class="form-control s_website_form_input" name="description" placeholder="" id="ode9zsst5eo" rows="3"/>
+        
+                    
+
+
+        
+        
+        
+    
+                </div>
+            </div>
+        </div><div class="mb-0 py-2 col-12 s_website_form_submit" style="">
+                                                    <div style="width: 200px;" class="s_website_form_label"/>
+                                                    <button type="submit" class="btn btn-primary"> Đăng ký</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="col-lg-4 mt-4 mt-lg-0 o_colored_level">
+                                <ul class="list-unstyled mb-0 ps-2">
+                                    <li>Liên hệ ngay với B.ERP</li>
+                                    <li/>
+                                    <li><i class="fa fa-phone fa-fw me-2"/><span class="o_force_ltr">+84 (0) 906 965 737</span></li>
+                                    <li><i class="fa fa-1x fa-fw fa-envelope me-2"/><span>b2b@blueboltsoftware.com</span></li></ul></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <script src="/registry_account/static/src/js/sub_info.js"/>
+
+        </t>
+    </template>
+</odoo>
+
+
+
+

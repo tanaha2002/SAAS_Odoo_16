@@ -6,6 +6,7 @@ import configparser
 import os
 from odoo.http import request
 import erppeek
+from . import config
 #list of apps
 apps_1 = [
     {'name': 'CRM', 'value': 'crm','icon':'registry_account/static/src/images/CRM.png'},
@@ -29,21 +30,28 @@ apps_2 = [
 user_info = {
     'db_name': '',
     #make sure replace with ur admin password
-    'admin_password': 'admin123',
+    'admin_password': config.admin_passwd,
     'user_password': '',
     'login_name': '',
     'name_user': '',
-    'selected_apps': '',
-    'type_of_db': ''
+    'type_of_db': '',
+    'company_name': '',
+    'phone': '',
+    'description': '',
+    'support_type': '',
+    'company_size': ''
+
     }
 class RegistryAccount(http.Controller):
-    
-    
-
-    @http.route('/registryAccount', type='http', auth='public', website=True)
+    @http.route('/dangkyaa', type='http', auth='public', website=True)
     def main(self, **kw):
         return request.render('registry_account.signup', {})
+    @http.route('/registryAccount', type='http', auth='public', website=True)
+    def main(self, **kw):
+        return request.render('registry_account.dangkyaccount', {})
+
     
+        
     @http.route('/addDatabase', type='http', auth='public', website=True, methods=['POST'])
     def create_database(self, **post):
         try:
@@ -79,20 +87,58 @@ class RegistryAccount(http.Controller):
                         configfile.write(line)
                     
             
-            subprocess.check_output([sys.executable, 'custom_addons/registry_account/create_database.py'])
+            result = subprocess.check_output([sys.executable, 'custom_addons/registry_account/create_database.py'])
+            result_encode = result.decode('utf-8').strip()
+            #Add success info user register to own database
+            if result_encode == 'create user success':
+                #run script add new info to own database to track user register
+                result_2 = subprocess.check_output([sys.executable, 'custom_addons/registry_account/add_info_db.py'])
+                result_encode_2 = result_2.decode('utf-8').strip()
+                if result_encode_2 == 'create lead success':
+                    #redirect to login page of new database
+                    redirect_url = 'https://' + db_name + '.berp.vn'
+                    #loading redirect url using js
+                    return """
+                        <script>
+                            window.location.href = '%s';
+                        </script>
+                    """ % redirect_url
+                else:
+                    return """
+                        <script>
+                            alert('Error Adding user');
+                            window.location.href = '/registryAccount';
+                        </script>
+                    """
+            else:
+                return """
+                    <script>
+                        alert('Create database success but error adding user');
+                        window.location.href = '/registryAccount';
+                    </script>
+                """
                    
-            #redirect to login page of new database
-            return request.redirect('/web/login?db=%s' % db_name)
+            
+            
+            # return True
             # return request.redirect('/selectModules')
         except subprocess.CalledProcessError as e:
             return f"Error creating database: {e.output}"
     @http.route('/selectModules', type='http', auth='public', website=True)
     def get_user_info(self, **post):
         try:
-            user_info['db_name'] = post.get('company')  # Lấy giá trị từ trường db_name trong form            
-            user_info['user_password'] = post.get('password')
-            user_info['login_name'] = post.get('email')
-            user_info['name_user'] = post.get('name')
+            user_info['db_name'] = str(post.get('company'))  # Lấy giá trị từ trường db_name trong form            
+            user_info['user_password'] = str(post.get('password'))
+            user_info['login_name'] = str(post.get('email'))
+            user_info['name_user'] = str(post.get('name'))
+            user_info['company_name'] = str(post.get('company_name'))
+            user_info['phone'] = str(post.get('phone'))
+            user_info['description'] = str(post.get('description'))
+            user_info['support_type'] = str(post.get('x_contact_via'))
+            user_info['company_size'] = str(post.get('Quy mô công ty'))
+
+            
+  
 
             if self.check_db_exist(user_info['db_name']):
                 # Hiển thị pop-up thông báo
@@ -111,8 +157,13 @@ class RegistryAccount(http.Controller):
                     'user_password': user_info['user_password'],
                     'login_name': user_info['login_name'],
                     'name_user': user_info['name_user'],
-                    'selected_apps': user_info['selected_apps'],
-                    'type_of_db': user_info['type_of_db']
+                    'type_of_db': user_info['type_of_db'],
+                    'company_name': user_info['company_name'],
+                    'phone': user_info['phone'],
+                    'description': user_info['description'],
+                    'support_type': user_info['support_type'],
+                    'company_size': user_info['company_size']
+
 
                 }
                 with open('database_info.ini', 'w') as configfile:
@@ -125,7 +176,7 @@ class RegistryAccount(http.Controller):
             return f"Error creating database: {e.output}"
         
     def check_db_exist(self, db_name):
-        url = 'http://localhost:8069'
+        url = config.url
         client = erppeek.Client(server=url)
         db_list = client.db.list()
         print(db_list)
