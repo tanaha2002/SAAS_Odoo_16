@@ -50,6 +50,9 @@ try:
     }
     # #create a new user in new database with admin rights
     new_user_id = client.create('res.users', new_user_vals)
+    #call a script file to add certificate certbot
+    subprocess.check_output([sys.executable, 'custom_addons/registry_account/script.py',db_name])
+    #
     print('create user success')
 
 except subprocess.CalledProcessError as e:
