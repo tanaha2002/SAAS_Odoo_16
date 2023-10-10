@@ -21,6 +21,7 @@
                                     <div class="container">
                                     
                                         <form action="/selectModules" class="o_mark_required" role="form" method="post" t-if="not message"  style="max-width: 760px;">
+                                        <!-- <form action="/kiemthucaptcha" class="o_mark_required" role="form" method="post" t-if="not message"  style="max-width: 760px;"> -->
                                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                                             <div class="s_website_form_rows row s_col_no_bgcolor">
                                                 
@@ -46,9 +47,25 @@
             <span class="s_website_form_mark">   *</span></label>
                 <div class="col-sm">
                     
-            <input type="text" class="form-control s_website_form_input" name="name" required="1" placeholder="" id="o9njlj4cyxb" data-fill-with="name" wfd-id="id4"/>
-        
+            <input type="text" class="form-control s_website_form_input" name="name" required="1" placeholder="" id="o9njlj4cyxb" data-fill-with="name" wfd-id="id4" oninput="validateName(this)" />
+            <div id="error-message-name" style="color: red;"></div>
+            <script>
+                function validateName(input) {
+                    const regex = /^[a-zA-Z\s]+$/;
+                    const inputString = input.value;
                     
+                    
+                    const normalizedString = inputString.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, 'd').replace(/Đ/g, 'D');
+                    const errorMessage = document.getElementById("error-message-name");
+
+                    if (!inputString || regex.test(normalizedString)) {
+                        errorMessage.innerText = "";
+                    } else {
+                        errorMessage.innerText = "Họ và tên không hợp lệ.";
+                    }
+                    
+                }
+            </script>        
 
 
         
@@ -57,7 +74,8 @@
     
                 </div>
             </div>
-        </div><div data-visibility-condition="" data-visibility-between="" class="s_website_form_field mb-3 col-12 s_website_form_required" data-type="tel" data-name="Field">
+        </div>
+        <div data-visibility-condition="" data-visibility-between="" class="s_website_form_field mb-3 col-12 s_website_form_required" data-type="tel" data-name="Field">
             <div class="row s_col_no_resize s_col_no_bgcolor">
                 <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px;" for="oax6z47p0zpk">
                      
@@ -65,8 +83,8 @@
         <span class="s_website_form_label_content">Số điện thoại</span></label>
                 <div class="col-sm">
                     
-            <input type="tel" class="form-control s_website_form_input" name="phone" value="" placeholder="" id="oax6z47p0zpk" data-fill-with="phone" required="" wfd-id="id8"/>
-        
+            <input type="tel" class="form-control s_website_form_input" name="phone" value="" placeholder="" id="oax6z47p0zpk" data-fill-with="phone" required="" wfd-id="id8" oninput="validatePhone(this)"  />
+            <div id="error-message-phone" style="color: red;"></div>
                     
 
 
@@ -77,6 +95,19 @@
                 </div>
             </div>
         </div>
+        <script>
+                function validatePhone(input) {
+                    const regex = /^\d{9,13}$/;
+                    const inputString = input.value;
+                    const errorMessage = document.getElementById("error-message-phone");
+                    
+                    if (regex.test(inputString)) {
+                        errorMessage.innerText = "";
+                    } else {
+                        errorMessage.innerText = "Số điện thoại không hợp lệ";
+                    }
+                }
+            </script>
         <div data-visibility-condition="" data-visibility-between="" class="s_website_form_field mb-3 col-12" data-type="selection" data-name="Field">
             <div class="row s_col_no_resize s_col_no_bgcolor">
                 <label class=" col-sm-auto s_website_form_label " style="width: 200px" for="otkzj0spgxio">
@@ -151,8 +182,8 @@
             <span class="s_website_form_mark"> *</span></label>
                 <div class="col-sm">
                     
-            <input type="email" class="form-control s_website_form_input" name="email" required="true" value="" placeholder="" id="o0xpn4wwt6rhm" data-fill-with="undefined" wfd-id="id9"/>
-        
+            <input type="email" class="form-control s_website_form_input" name="email" required="true" value="" placeholder="" id="o0xpn4wwt6rhm" data-fill-with="undefined" wfd-id="id9" oninput="validateEmail(this)" />
+            <div id="error-message-email" style="color: red;" />
                     
 
 
@@ -162,7 +193,22 @@
     
                 </div>
             </div>
-        </div><div data-visibility-condition="" data-visibility-between="" class="s_website_form_field mb-3 col-12 s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+        </div>
+        <script>
+                function validateEmail(input) {
+                    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                    const inputString = input.value;
+                    const errorMessage = document.getElementById("error-message-email");
+                    
+                    if (regex.test(inputString)) {
+                        errorMessage.innerText = "";
+                    } else {
+                        errorMessage.innerText = "Email không hợp lệ";
+                    }
+                }
+            </script>
+
+        <div data-visibility-condition="" data-visibility-between="" class="s_website_form_field mb-3 col-12 s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
             <div class="row s_col_no_resize s_col_no_bgcolor">
                 <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px;" for="o39xcke4vn7r">
                      
@@ -175,29 +221,8 @@
                 </label>
                 <div class="col-sm">
                     
-            <input type="password" class="form-control s_website_form_input" name="password" required="1" value="" placeholder="" id="o39xcke4vn7r" data-fill-with="undefined" wfd-id="id10"/>
-        
-                    
-
-
-        
-        
-        
-    
-                </div>
-            </div>
-        </div><div data-visibility-condition="" data-visibility-between="" class="s_website_form_field mb-3 col-12 s_website_form_required" data-type="char" data-name="Field">
-            <div class="row s_col_no_resize s_col_no_bgcolor">
-                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px;" for="o8yer21ma289">
-                     
-        
-        <span class="s_website_form_label_content">Tên công ty</span>
-        
-            <span class="s_website_form_mark"> *</span></label>
-                <div class="col-sm">
-                    
-            <input type="text" class="form-control s_website_form_input" name="company_name" required="1" value="" id="o8yer21ma289" data-fill-with="undefined" wfd-id="id11"/>
-        
+            <input type="password" class="form-control s_website_form_input" name="password" required="1" value="" placeholder="" id="o39xcke4vn7r" data-fill-with="undefined" wfd-id="id10" oninput="validatePasswd(this)" />
+            <div id="error-message-passwd" style="color: red;"/>
                     
 
 
@@ -208,6 +233,61 @@
                 </div>
             </div>
         </div>
+        <script>
+            function validatePasswd(input) {
+                const regex = /^.{6,}$/;
+                const inputString = input.value;
+                const errorMessage = document.getElementById("error-message-passwd");
+                
+                if (regex.test(inputString)) {
+                    errorMessage.innerText = "";
+                } else {
+                    errorMessage.innerText = "Mật khẩu tối thiểu 6 ký tự";
+                }
+            }
+        </script>
+        
+        <div data-visibility-condition="" data-visibility-between="" class="s_website_form_field mb-3 col-12 s_website_form_required" data-type="char" data-name="Field">
+            <div class="row s_col_no_resize s_col_no_bgcolor">
+                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px;" for="o8yer21ma289">
+                     
+        
+        <span class="s_website_form_label_content">Tên công ty</span>
+        
+            <span class="s_website_form_mark"> *</span></label>
+                <div class="col-sm">
+                    
+            <input type="text" class="form-control s_website_form_input" name="company_name" required="1" value="" id="o8yer21ma289" data-fill-with="undefined" wfd-id="id11" oninput="validateCompany(this)" />
+            <div id="error-message-company" style="color: red;"></div>
+                    
+
+
+        
+        
+        
+    
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function validateCompany(input) {
+                const regex = /^[a-zA-Z0-9\s]+$/;
+                const inputString = input.value;
+                
+                
+                const normalizedString = inputString.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, 'd').replace(/Đ/g, 'D');;
+
+                const errorMessage = document.getElementById("error-message-company");
+
+                if (!inputString || regex.test(normalizedString)) {
+                    errorMessage.innerText = "";
+                } else {
+                    errorMessage.innerText = "Tên công ty không hợp lệ.";
+                }
+                
+            }
+        </script>
         <div data-visibility-condition="" data-visibility-between="" class="s_website_form_field mb-3 col-12 s_website_form_required" data-type="char" data-name="Field">
             <div class="row s_col_no_resize s_col_no_bgcolor">
                 <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px;" for="o8yer21ma2892">
@@ -218,8 +298,8 @@
             <span class="s_website_form_mark"> *</span></label>
                 <div class="col-sm">
                     
-            <input type="text" class="form-control s_website_form_input" name="company" required="1" value="" id="o8yer21ma2892" data-fill-with="undefined"/>
-        
+            <input type="text" class="form-control s_website_form_input" name="company" required="1" value="" id="o8yer21ma2892" data-fill-with="undefined" oninput="validateCompanyWeb(this)"/>
+            <div id="error-message-companyweb" style="color: red;"></div>
                     
 
 
@@ -230,6 +310,20 @@
                 </div>
             </div>
         </div>
+        <script>
+            function validateCompanyWeb(input) {
+                const regex = /^[a-zA-Z0-9]*$/;
+                const inputString = input.value;
+                const errorMessage = document.getElementById("error-message-companyweb");
+                
+                if (regex.test(inputString)) {
+                    errorMessage.innerText = "";
+                } else {
+                    errorMessage.innerText = "Tên subdomain không hợp lệ.";
+                }
+            }
+        </script>
+
         <div class="info-bubble" id="infoBubble">
             Ví dụ khi đăng ký subdomain là <b>bluebolt</b> thì bạn sẽ có domain là <b>bluebolt.berp.vn</b>
         </div>
@@ -288,7 +382,53 @@
                 <div class="col-sm">
                     
             <textarea class="form-control s_website_form_input" name="description" placeholder="" id="ode9zsst5eo" rows="3"/>
-        
+            <script src='https://www.google.com/recaptcha/api.js'></script>
+      <div id ="captcha" class="imageContainer" style="margin-top:2%;">
+        <div class="form-group">
+          <!-- specify your site  in data-sitekey attribute-->
+          <div class="g-recaptcha" data-sitekey="6Le5nMQUAAAAALpK02mtPPGnpjVlnq6orhz4Zj0u"
+                  data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
+          <input class="form-control d-none" data-recaptcha="true"/>
+          <div class="help-block with-errors" id="err" style='color: red'></div>
+        </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+            $("form").submit(function(event) {
+
+            var recaptcha = $("#g-recaptcha-response").val();
+
+            // Tạo một mảng chứa các trường cần kiểm tra và mẫu regex tương ứng
+            var fieldsToCheck = [
+                    "error-message-name",
+                    "error-message-phone",
+                    "error-message-email",
+                    "error-message-passwd",
+                    "error-message-company",
+                    "error-message-companyweb",
+                ];
+
+            if (recaptcha === "") {
+                event.preventDefault();
+                document.getElementById('err').innerHTML="Please verify Captcha";
+            }
+            else{
+                var i = 0;
+                while (i !== fieldsToCheck.length) {
+                    var fieldId = fieldsToCheck[i];
+                    var inputValue = $("#" + fieldId).text().trim();
+                    
+                    if (inputValue !== "") {
+                        event.preventDefault();
+                        return;
+                    }
+                    i++;
+                }
+                return true;
+            }
+                });
+
+         </script>
                     
 
 
@@ -298,11 +438,14 @@
     
                 </div>
             </div>
-        </div><div class="mb-0 py-2 col-12 s_website_form_submit" style="">
+        </div>
+        </div>
+        
+        <div class="mb-0 py-2 col-12 s_website_form_submit" style="">
                                                     <div style="width: 200px;" class="s_website_form_label"/>
                                                     <button type="submit" class="btn btn-primary"> Đăng ký</button>
                                                 </div>
-                                            </div>
+                                                
                                         </form>
                                     </div>
                                 </section>
